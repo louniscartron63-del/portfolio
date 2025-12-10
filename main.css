@@ -1,0 +1,111 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    outline: none;
+}
+html{
+    font-size: 16px;
+    font-family: "Stack Sans Headline", sans-serif;
+    scroll-behavior: smooth;
+}
+header{
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2));
+    background-position: top right;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+header>hgroup{
+    width: 80%;
+    color: white;
+}
+header>hgroup>*{
+    margin-top: 1rem;
+}
+p#socialnetwork a{
+    color: white;
+    font-size: 2rem;
+}
+p#socialnetwork a:hover{
+    color: rgb(167, 74, 74);
+}
+header>hgroup>h1::first-letter{
+    color: rgb(167, 74, 74);
+}
+nav{
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    box-sizing: border-box;
+    color: whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
+nav>ul{
+    display: flex;
+    list-style: none;
+    gap: 1rem;
+}
+nav>ul>li>a{
+    color: whitesmoke;
+    text-decoration: none;
+}
+nav>ul>li>a:hover{
+    color: rgb(167, 74, 74);
+}
+nav>p{
+    font-size: 1rem;
+    font-weight: bold;
+}
+main>section{
+    box-sizing: border-box;
+    min-height: 100vh;
+    padding: 4rem;
+}
+footer{
+    text-align: center;
+    padding: 0.5rem .4rem;
+    font-size: .8rem;
+    border-top: 1px solid black;
+}
+div.cards{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+div.cards>article{
+    width: 24%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+}
+@media print{
+    nav{
+        display: none;
+    }
+}
+@media screen and (max-width: 1024px){
+    div.cards>article{
+        width: 48%;
+    }
+
+}
+@media screen and (max-width: 640px){
+   
+    div.cards>article{
+        width: 90%;
+    }
+    main>section{
+        padding: 1rem;
+    }
+    nav{
+        flex: 1rem;
+    }
+}
