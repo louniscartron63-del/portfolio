@@ -1,111 +1,340 @@
+/* --- Variables & Reset (Simplifié) --- */
+:root {
+    --primary-bg: #ffffff;
+    --secondary-bg: #f8f9fa;
+    --text-color: #333333;
+    --text-light: #666666;
+    --accent-color: #a74a4a; /* Ton rouge */
+    --accent-hover: #8a3b3b;
+    --shadow: none; 
+    --radius: 4px; 
+}
 
-@import url('https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap');
-
-*{
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
     outline: none;
 }
-html{
-    font-size: 16px;
-    font-family: "Stack Sans Headline", sans-serif;
+
+html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
-header{
-    min-height: 100vh;
-    background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.2));
-    background-position: top right;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    background-color: var(--primary-bg);
 }
-header>hgroup{
-    width: 80%;
-    color: white;
+
+h1, h2, h3, h4 {
+    font-family: 'Playfair Display', serif; 
+    color: #1a1a1a;
+    margin-bottom: 1rem;
 }
-header>hgroup>*{
-    margin-top: 1rem;
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: 0.2s;
 }
-p#socialnetwork a{
-    color: white;
-    font-size: 2rem;
+
+ul {
+    list-style: none;
 }
-p#socialnetwork a:hover{
-    color: rgb(167, 74, 74);
+
+/* --- Utilitaires --- */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 2rem;
 }
-header>hgroup>h1::first-letter{
-    color: rgb(167, 74, 74);
+
+.section-title {
+    text-align: center;
+    font-size: 2rem; 
+    margin-bottom: 2rem; 
+    position: relative;
+    padding-bottom: 0.5rem;
 }
-nav{
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
+
+.section-title::after {
+    content: '';
+    display: block;
+    width: 40px; 
+    height: 2px; 
+    background-color: var(--accent-color);
+    margin: 5px auto 0;
+}
+
+.bg-light {
+    background-color: var(--secondary-bg);
+}
+
+.text-center { text-align: center; }
+
+/* --- Navigation --- */
+nav {
+    position: sticky; 
     top: 0;
     left: 0;
     width: 100%;
-    padding: 1rem;
-    box-sizing: border-box;
-    color: whitesmoke;
+    background-color: var(--primary-bg); 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05); 
+    z-index: 1000;
+}
+
+.nav-content {
+    max-width: 1100px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
 }
-nav>ul{
+
+.logo {
+    font-size: 1.2rem; 
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif; 
+    color: var(--text-color);
+}
+
+nav ul {
     display: flex;
-    list-style: none;
+    gap: 1.5rem;
+}
+
+nav ul li a:hover {
+    color: var(--accent-color);
+}
+
+.btn-contact {
+    border: 1px solid var(--accent-color);
+    padding: 0.3rem 0.8rem; 
+    border-radius: 4px; 
+    color: var(--accent-color) !important;
+}
+
+.btn-contact:hover {
+    background-color: var(--accent-color);
+    color: white !important;
+}
+
+/* --- Header / Hero (Très simplifié) --- */
+header {
+    height: 60vh; 
+    background: var(--text-color); /* Couleur unie sombre */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 4rem 0;
+}
+
+.hero-content {
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+header h1 {
+    font-size: 3rem; 
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Poppins', sans-serif; 
+    font-weight: 600;
+}
+
+header h2 {
+    font-size: 1.2rem;
+    color: #ccc;
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* --- Section À Propos --- */
+section {
+    padding: 3rem 0; 
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+    align-items: flex-start; 
+}
+
+.about-highlight {
+    background-color: var(--secondary-bg); 
+    color: var(--text-color);
+    padding: 1.5rem;
+    border-radius: var(--radius);
+    text-align: center;
+    box-shadow: none;
+}
+
+.about-highlight h3 {
+    font-family: 'Playfair Display', serif; 
+}
+
+
+/* --- Section Compétences --- */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem; 
+}
+
+.skill-card {
+    background: white;
+    padding: 1.5rem; 
+    border-radius: var(--radius);
+    border: 1px solid #eee; 
+    transition: none;
+}
+
+.skill-card:hover {
+    transform: none;
+    border-color: var(--accent-color); 
+}
+
+.skill-card .icon {
+    display: none; /* Supprime le style des icônes */
+}
+
+.skill-detail {
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.lang-list li {
+    padding: 0.3rem 0;
+    border-bottom: 1px dotted #ddd; 
+}
+
+
+/* --- Section Projets --- */
+.project-card {
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid #eee;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    border-left: none;
+}
+
+.project-header {
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    justify-content: flex-start; 
     gap: 1rem;
 }
-nav>ul>li>a{
-    color: whitesmoke;
-    text-decoration: none;
-}
-nav>ul>li>a:hover{
-    color: rgb(167, 74, 74);
-}
-nav>p{
-    font-size: 1rem;
-    font-weight: bold;
-}
-main>section{
-    box-sizing: border-box;
-    min-height: 100vh;
-    padding: 4rem;
-}
-footer{
-    text-align: center;
-    padding: 0.5rem .4rem;
-    font-size: .8rem;
-    border-top: 1px solid black;
-}
-div.cards{
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-}
-div.cards>article{
-    width: 24%;
-    box-sizing: border-box;
-    margin-bottom: 1rem;
-}
-@media print{
-    nav{
-        display: none;
-    }
-}
-@media screen and (max-width: 1024px){
-    div.cards>article{
-        width: 48%;
-    }
 
+.project-header h3 {
+    font-size: 1.1rem;
+    font-family: 'Playfair Display', serif;
 }
-@media screen and (max-width: 640px){
-   
-    div.cards>article{
-        width: 90%;
+
+.badge {
+    background-color: var(--accent-color); 
+    color: white;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.project-body {
+    padding: 1.5rem;
+    display: block; 
+}
+
+.project-work {
+    background-color: #f8f8f8; 
+    padding: 0.8rem;
+    border-left: 3px solid var(--accent-color);
+    margin: 1rem 0;
+}
+
+.project-work ul {
+    list-style: disc;
+    margin-left: 1.5rem;
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.project-image {
+    display: none; 
+}
+
+
+/* --- Timeline Parcours (Très simplifié) --- */
+.timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.timeline::before {
+    content: none; 
+}
+
+.timeline-item {
+    padding: 1rem 0;
+    border-left: none;
+    border-bottom: 1px solid #eee; 
+    position: relative;
+}
+
+.timeline-item:last-child {
+    border-bottom: none;
+}
+
+.timeline-item::before {
+    content: none; 
+}
+
+.timeline-item .date {
+    font-weight: 600;
+    color: var(--accent-color);
+    margin-bottom: 0.2rem;
+    font-size: 0.9rem;
+}
+
+/* --- Contact & Footer --- */
+.btn-primary {
+    display: none; 
+}
+
+.footer-socials {
+    display: none; 
+}
+
+footer {
+    background-color: #222;
+    color: #ccc;
+    text-align: center;
+    padding: 1rem;
+    font-size: 0.8rem;
+}
+
+/* --- Responsive (Simplifié) --- */
+@media screen and (max-width: 768px) {
+    nav .nav-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        padding: 0.8rem 1rem;
     }
-    main>section{
-        padding: 1rem;
-    }
-    nav{
-        flex: 1rem;
-    }
+    
+    nav ul { gap: 0.8rem; }
+
+    header { height: 40vh; }
+    header h1 { font-size: 2rem; }
+    
+    .about-grid { grid-template-columns: 1fr; }
+    
+    .timeline { padding: 0 1rem; }
 }
