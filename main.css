@@ -61,6 +61,7 @@ ul {
 }
 
 .section-title::after {
+    text-align: center;
     content: '';
     display: block;
     width: 40px; 
@@ -158,7 +159,7 @@ header h2 {
 
 /* --- Section À Propos --- */
 section {
-    padding: 3rem 0; 
+    padding: 3rem ; 
 }
 
 .about-grid {
@@ -171,7 +172,7 @@ section {
 .about-highlight {
     background-color: var(--secondary-bg); 
     color: var(--text-color);
-    padding: 1.5rem;
+    padding: 4rem;
     border-radius: var(--radius);
     text-align: center;
     box-shadow: none;
@@ -337,4 +338,17 @@ footer {
     .about-grid { grid-template-columns: 1fr; }
     
     .timeline { padding: 0 1rem; }
+}
+
+.profile-pic {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-top: 1rem;
+}
+.about-text p {
+    margin-bottom: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
 }
