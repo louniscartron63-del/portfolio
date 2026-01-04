@@ -1,14 +1,13 @@
-/* --- Variables & Couleurs CV --- */
+/* --- Variables Inspirées du Style Virmaux --- */
 :root {
-    --primary-bg: #ffffff;
-    --secondary-bg: #f4f7f9;
-    --text-color: #1e272e;
-    --text-light: #485460;
-    --accent-color: #2e5984; /* Bleu professionnel du CV */
-    --accent-hover: #1e3a56;
-    --border-color: #d1d8e0;
-    --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.05);
-    --radius: 8px; /* Coins légèrement plus carrés pour un look "CV" */
+    --bg-dark: #0f172a;           /* Fond bleu nuit très sombre */
+    --bg-card: rgba(30, 41, 59, 0.7); /* Cartes semi-transparentes */
+    --accent-blue: #38bdf8;       /* Bleu clair électrique pour les titres */
+    --text-main: #f1f5f9;         /* Blanc cassé pour la lecture */
+    --text-dim: #94a3b8;          /* Gris bleu pour les détails */
+    --border-glass: rgba(255, 255, 255, 0.1);
+    --shadow-glow: 0 0 20px rgba(56, 189, 248, 0.15);
+    --radius: 12px;
 }
 
 * {
@@ -17,214 +16,181 @@
     box-sizing: border-box;
 }
 
-html {
-    scroll-behavior: smooth;
-}
-
 body {
     font-family: 'Poppins', sans-serif;
-    color: var(--text-color);
-    line-height: 1.6;
-    background-color: var(--primary-bg);
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.7;
+    overflow-x: hidden;
 }
 
-/* --- Animations --- */
-@keyframes fadeInUp {
-    from { opacity: 0; transform: translateY(20px); }
+/* --- Animation d'entrée "Slide & Fade" --- */
+@keyframes reveal {
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
 section {
-    padding: 4rem 0;
+    padding: 6rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
     opacity: 0;
-    animation: fadeInUp 0.8s ease forwards;
+    animation: reveal 1s ease forwards;
 }
 
-/* --- Navigation --- */
+/* --- Navigation Moderne --- */
 nav {
-    position: sticky;
+    position: fixed;
     top: 0;
-    background: rgba(255, 255, 255, 0.98);
-    border-bottom: 2px solid var(--accent-color);
+    width: 100%;
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-glass);
     z-index: 1000;
 }
 
 .nav-content {
     max-width: 1100px;
     margin: 0 auto;
+    padding: 1.2rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
 }
 
 .logo {
-    font-weight: 800;
-    color: var(--accent-color);
-    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--accent-blue);
     letter-spacing: 1px;
 }
 
 nav ul {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     list-style: none;
 }
 
-nav ul li a:hover {
-    color: var(--accent-color);
-}
-
-.btn-contact {
-    background: var(--accent-color);
-    color: white !important;
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
+nav ul li a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 0.9rem;
     transition: 0.3s;
 }
 
-.btn-contact:hover {
-    background: var(--text-color);
+nav ul li a:hover {
+    color: var(--accent-blue);
 }
 
-/* --- Header Style CV --- */
+/* --- Header / Hero --- */
 header {
-    height: 60vh;
-    background: var(--secondary-bg);
-    border-bottom: 1px solid var(--border-color);
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+    background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
 }
 
-.hero-content h1 {
-    font-size: 3.5rem;
-    color: var(--accent-color);
-    margin-bottom: 0.5rem;
+header h1 {
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    background: linear-gradient(to right, #fff, var(--accent-blue));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 800;
 }
 
-.hero-content h2 {
-    font-size: 1.4rem;
-    color: var(--text-light);
-    font-weight: 400;
-    border-top: 2px solid var(--accent-color);
-    display: inline-block;
-    padding-top: 0.5rem;
+header h2 {
+    color: var(--text-dim);
+    font-weight: 300;
+    margin-top: 1rem;
+    letter-spacing: 2px;
 }
 
 .profile-pic {
     width: 180px;
     height: 180px;
-    border-radius: 8px; /* Carré arrondi comme sur un CV */
-    border: 3px solid var(--accent-color);
-    margin-top: 2rem;
-    transition: 0.3s;
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; /* Forme organique */
+    border: 2px solid var(--accent-blue);
+    margin-top: 3rem;
+    animation: morphing 8s infinite ease-in-out;
 }
 
-/* --- Sections & Encadrés Bleus --- */
+@keyframes morphing {
+    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+    50% { border-radius: 50% 50% 30% 70% / 50% 60% 40% 50%; }
+    100% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; }
+}
+
+/* --- Titres de Section --- */
 .section-title {
-    color: var(--accent-color);
-    text-transform: uppercase;
-    font-size: 1.8rem;
-    margin-bottom: 2.5rem;
-    text-align: left;
-    border-bottom: 2px solid var(--border-color);
-}
-
-.about-text {
-    border-left: 4px solid var(--accent-color);
-    padding-left: 2rem;
-    background: var(--secondary-bg);
-    padding: 2rem;
-}
-
-/* Cartes Compétences type "Encadré Bleu" */
-.skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
-}
-
-.skill-card {
-    background: white;
-    padding: 1.5rem;
-    border: 1px solid var(--border-color);
-    border-top: 4px solid var(--accent-color); /* Rappel du haut de section */
-    transition: 0.3s;
-}
-
-.skill-card:hover {
-    box-shadow: var(--shadow-soft);
-    transform: translateY(-5px);
-}
-
-.skill-card h3 {
-    color: var(--accent-color);
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-/* --- Parcours & Projets --- */
-.timeline-item {
-    border: 1px solid var(--border-color);
-    margin-bottom: 1rem;
-    padding: 1.5rem;
+    font-size: 2rem;
+    margin-bottom: 3rem;
     display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-title::before {
+    content: "";
+    width: 40px;
+    height: 2px;
+    background: var(--accent-blue);
+}
+
+/* --- Cartes Style Bastien Virmaux (Glassmorphism) --- */
+.skill-card, .project-card, .timeline-item {
+    background: var(--bg-card);
+    border: 1px solid var(--border-glass);
+    padding: 2rem;
+    border-radius: var(--radius);
+    transition: all 0.4s ease;
+    margin-bottom: 1.5rem;
+}
+
+.skill-card:hover, .project-card:hover {
+    border-color: var(--accent-blue);
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-glow);
+}
+
+.skill-card h3, .project-header h3 {
+    color: var(--accent-blue);
+    margin-bottom: 1rem;
+}
+
+/* --- Timeline --- */
+.timeline-item {
+    display: grid;
+    grid-template-columns: 200px 1fr;
     gap: 2rem;
-    background: white;
+    position: relative;
 }
 
 .date {
-    min-width: 150px;
-    color: var(--accent-color);
-    font-weight: 700;
-}
-
-.project-card {
-    border: 2px solid var(--secondary-bg);
-    border-radius: var(--radius);
-    margin-bottom: 2rem;
-}
-
-.project-header {
-    background: var(--accent-color);
-    color: white;
-    padding: 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.project-header h3 { color: white; margin: 0; }
-
-.badge {
-    background: rgba(255,255,255,0.2);
-    border: 1px solid white;
-    padding: 0.2rem 0.6rem;
-    font-size: 0.8rem;
-}
-
-/* --- CV & Download --- */
-.cv-place-holder img {
-    border: 1px solid var(--border-color);
-    max-width: 100%;
-    box-shadow: var(--shadow-soft);
-}
-
-a[download] {
-    display: inline-block;
-    margin-top: 1.5rem;
-    padding: 1rem 2rem;
-    background: var(--accent-color);
-    color: white !important;
-    text-decoration: none;
+    color: var(--accent-blue);
     font-weight: 600;
-    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* --- Boutons --- */
+.btn-contact, a[download] {
+    padding: 0.8rem 1.8rem;
+    border: 1px solid var(--accent-blue);
+    color: var(--accent-blue) !important;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: 0.3s;
+    background: transparent;
+}
+
+.btn-contact:hover, a[download]:hover {
+    background: var(--accent-blue);
+    color: var(--bg-dark) !important;
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.4);
 }
 
 /* --- Responsive --- */
 @media (max-width: 768px) {
-    .timeline-item { flex-direction: column; gap: 0.5rem; }
-    .hero-content h1 { font-size: 2.5rem; }
+    .timeline-item { grid-template-columns: 1fr; }
+    nav ul { display: none; } /* On pourrait ajouter un menu burger ici */
 }
